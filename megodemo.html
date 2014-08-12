@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>http://www.youtube.com/watch?v=be6UGdUbcjY</title>
+</head>
+<body>
+	<script src="seriously.js"></script>
+	<script src="effects/seriously.directionblur.js"></script>
+	<script>
+	// ATTEMPT 1
+		// create a composition - a new seriously instance
+		var seriously = new Seriously();
+		// creating the 1 - source node;
+		var video = document.createElement("video"), source = seriously.source(video);
+
+		// create a 2 - effect node;
+		var blur = seriously.effect('directionblur');
+		//adjust parameters
+		blur.amount = 0.8;
+		blur.angle = Math.PI/4; //45deg
+
+		// create a 3 - target node
+		var canvas = document.createElement("canvas");
+		canvas.width = 960;
+		canvas.height = 540;
+		document.body.appendChild(canvas);
+		var target = seriously.target(canvas);
+
+		// string them all together
+		blur.source= source;
+		target.source= blur;
+
+		seriously.go();
+		//target.render();
+/* preprocess what you can
+CORS - cross origin restrictions - headers
+keep videos 960 x 540 (60fps)
+*/		 
+	</script>
+</body>
+</html>
